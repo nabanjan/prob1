@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -18,7 +19,10 @@ func main() {
 		runes := []rune(curr)
 		dir := string(runes[0:1])
 		s1 := string(runes[1 : len(curr)-1])
-		num, _ := strconv.Atoi(s1)
+		num, err := strconv.Atoi(s1)
+		if err != nil {
+			log.Fatal("Input is wrong!")
+		}
 		switch prev {
 		case "N":
 			switch dir {
